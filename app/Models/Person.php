@@ -24,7 +24,7 @@ class Person extends Model
         return $this->id . ': ' . $this->name . ' (' . $this->age . ')';
     }
 
-    #リレーション
+    //リレーション
     public function boards()
     {
         return $this->hasMany('App\Models\Board');
