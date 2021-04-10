@@ -86,4 +86,17 @@ class HelloController extends Controller
     {
         return view('hello.rest');
     }
+
+    public function ses_get(Request $request)
+    {
+        $sesdata = $request->session()->get('msg');//msgが無ければnullを返す
+        return view('hello.session', ['session_data'=>$sesdata]);
+    }
+
+    public function ses_put(Request $request)
+    {
+        $msg = $request->input;
+        $request->session()->put('msg', $msg);//msgというkeyで$msgを保存する。get('msg')で取り出せる。Illuminate/Session/Store.php
+        return redirect('hello/session');
+    }
 }
